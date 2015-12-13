@@ -1,0 +1,94 @@
+<div class="modal-body wrapper-lg">
+	<div ng-show="showCategory" class="category_panel">
+		<div class="row">
+			<div class="col-sm-9"></div>
+			<div class="col-sm-3">
+				<div class="input-group">
+					<input type="text" ng-model="new_category"
+						class="input-sm form-control" placeholder="add category">
+					<span class="input-group-btn">
+						<button class="btn btn-sm btn-default" type="button"
+							ng-click="addCategory()">Save!</button>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+
+			<div class="col-sm-12">
+
+				<div class="list-group no-radius alt">
+
+					<span ng-repeat="category in categories">
+						<li class="list-group-item">
+							<div class="row">
+								<a href ng-click="selectCategory({{category.id_category}})"
+									class="col-xs-10 nopadding block"> <i
+									class="glyphicon glyphicon-unchecked text-muted"></i>
+									{{category.name}}
+								</a> <a class="block col-xs-2 nopadding"
+									ng-click="deleteCategory({{category.id_category}})"> <i
+									class="fa fa-remove fa-2x pull-right" style="color: red;"></i>
+								</a>
+							</div>
+					</li>
+					</span>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div ng-show="showSubcategory" class="subcategory_panel">
+		<div class="row">
+			<div class="col-xs-2">
+				<button ng-click="back()" type="button"
+					class="btn btn-sm  btn-default">
+					<span class="glyphicon glyphicon-chevron-lef"></span> Back
+				</button>
+			</div>
+			<div class="col-xs-4"></div>
+			<div class="col-xs-6">
+				<div class="input-group">
+					<input type="text" ng-model="new_subcategory"
+						class="input-sm form-control" placeholder="add subcategory">
+					<span class="input-group-btn">
+						<button ng-click="addSubcategory({{id_parent}})"
+							class="btn btn-sm btn-default" type="button">Save!</button>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+
+			<div class="col-sm-12">
+
+				<div class="list-group no-radius alt">
+
+					<span ng-repeat="subcategory in subcategories">
+						<li class="list-group-item">
+
+							<div class="row">
+
+
+								<a ng-click="selectSubCategory(subcategory)"
+									class="col-xs-10 nopadding block" href> <i
+									class="glyphicon glyphicon-unchecked text-muted"></i>
+									{{subcategory.name}}
+								</a> <a class="block col-xs-2 nopadding"
+									ng-click="deleteSubcategory({{subcategory.id_category}})">
+									<i class="fa fa-remove fa-2x pull-right" style="color: red;"></i>
+								</a>
+
+
+							</div>
+
+					</li>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+</div>

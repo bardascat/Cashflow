@@ -1,0 +1,35 @@
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">Budget</h1>
+</div>
+
+<div class="wrapper-md">
+    <div ng-controller="budgetController" ng-init="getBudget()">
+        <div class="row">
+            <div class="col-md-7">
+
+                <form name="form"  ng-submit="addBudget()" method="post" class="form-validation">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span class="h4"></span>
+                        </div>
+                        <div class="panel-body">
+
+                            <div ng-show="form.submitted" class="alert" ng-class="{'alert-success' : form.status, 'alert-danger':!form.status}" role="alert">
+                                {{form.message}}
+                            </div>
+
+                            <div class="form-group">
+                                <label>Amount</label>
+                                <input type="number"  class="form-control" ng-model="budget.amount" required >
+                            </div>
+
+                        </div>
+                        <footer class="panel-footer text-right bg-light lter">
+                            <button type="submit" class="btn btn-success" ng-disabled="form.$invalid">Submit</button>
+                        </footer>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

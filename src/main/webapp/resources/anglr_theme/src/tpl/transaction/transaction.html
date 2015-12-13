@@ -1,0 +1,77 @@
+<div ng-controller="transactionController">
+    <div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3"> {{transaction.id_transaction === undefined ? 'Add' : 'Edit'}} {{type === 'income' ? 'Income' : 'Expense'}}</h1>
+    </div>
+
+    <div class="wrapper-md">
+        <div>
+            <div class="row">
+                <div class="col-md-7">
+
+                    <form name="form" ng-submit="addTransaction()" method="post" class="form-validation">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <span class="h4"></span>
+                            </div>
+                            <div class="panel-body">
+
+                                <div ng-show="form.submitted" class="alert"
+                                     ng-class="{'alert-success' : form.status, 'alert-danger':!form.status}"
+                                     role="alert">
+                                    {{form.message}}
+                                </div>
+
+                                <div ng-controller="DatepickerDemoCtrl" class="form-group">
+
+                                    <label>Date</label>
+
+                                    <p class="input-group">
+                                        <input type="date" ng-required="true" datepicker-popup="{{format}}"
+                                               is-open="opened"
+                                               placeholder="yyyy-MM-dd" name="date" ng-model="transaction.date"
+                                               class="form-control" datepicker-options="dateOptions"
+                                               close-text="Close"/>
+		              <span class="input-group-btn">
+		                <button type="button" class="btn btn-default" ng-click="open($event)"><i
+                                class="glyphicon glyphicon-calendar"></i></button>
+		              </span>
+                                    </p>
+                                </div>
+                                <div class="form-group">
+                                    <label>{{type === 'income' ? 'Income' : 'Expense'}}</label>
+                                    <input type="number" class="form-control" ng-model="transaction.amount" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Category</label>
+                                    <input type="text" ng-click="openCategoriesPopup()" class="form-control"
+                                           ng-model="transaction.category_name" required>
+                                </div>
+
+                                <div class="form-group clearfix">
+                                    <label>Payment method</label>
+                                    <select ng-required="true" ng-model="transaction.payment_method"
+                                            class="populate placeholder form-control" name="payment_method">
+                                        <option value="">Select payment method</option>
+                                        <option value="cash">Cash</option>
+                                        <option value="card">Card</option>
+                                        <option value="op">Bank transfer</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <input type="text" class="form-control" ng-model="transaction.description">
+                                </div>
+
+                            </div>
+                            <footer class="panel-footer text-right bg-light lter">
+                                <button type="submit" class="btn btn-success">Submit
+                                </button>
+                            </footer>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
